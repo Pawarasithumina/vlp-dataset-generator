@@ -490,15 +490,6 @@ This project is licensed under the terms specified in the [`LICENSE`](LICENSE) f
 
 ---
 
-## Author
-
-**Pawara Sithumina**
-
-Data Science Student & Developer
-
-GitHub: `Pawarasithumina`
-
----
 
 ## Project Status
 
