@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" width="900" height="220" role="img" aria-label="VLP Lab workflow: configure, simulate, calculate RSS, generate dataset, save">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#1b1442"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="1" stop-color="#f0abfc"/>
+    </linearGradient>
+    <style>
+      text { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; text-anchor: middle; }
+      .node { fill: #151b34; stroke: #475569; stroke-width: 2; animation: lit 10s infinite; }
+      .n1 { animation-delay: 0s; } .n2 { animation-delay: 2s; } .n3 { animation-delay: 4s; }
+      .n4 { animation-delay: 6s; } .n5 { animation-delay: 8s; }
+      .label { fill: #e2e8f0; font-size: 15px; font-weight: 600; }
+      .small { fill: #94a3b8; font-size: 12px; }
+      .num { fill: #7dd3fc; font-size: 13px; font-weight: 700; }
+      .flow { stroke: url(#line); stroke-width: 3; stroke-dasharray: 8 8; animation: dash 1s linear infinite; fill: none; }
+      @keyframes dash { to { stroke-dashoffset: -16; } }
+      @keyframes lit {
+        0%   { stroke: #a78bfa; fill: #2a2160; }
+        14%  { stroke: #a78bfa; fill: #2a2160; }
+        20%,100% { stroke: #475569; fill: #151b34; }
+      }
+    </style>
+  </defs>
+
+  <rect width="900" height="220" rx="18" fill="url(#bg)"/>
+
+  <!-- connectors -->
+  <path class="flow" d="M170 110 H208"/>
+  <path class="flow" d="M348 110 H386"/>
+  <path class="flow" d="M526 110 H564"/>
+  <path class="flow" d="M704 110 H742"/>
+
+  <!-- nodes -->
+  <rect class="node n1" x="30"  y="62" width="140" height="96" rx="14"/>
+  <rect class="node n2" x="208" y="62" width="140" height="96" rx="14"/>
+  <rect class="node n3" x="386" y="62" width="140" height="96" rx="14"/>
+  <rect class="node n4" x="564" y="62" width="140" height="96" rx="14"/>
+  <rect class="node n5" x="742" y="62" width="128" height="96" rx="14"/>
+
+  <text class="num" x="100" y="86">01</text>
+  <text class="label" x="100" y="112">Configure</text>
+  <text class="small" x="100" y="134">room · LEDs · receiver</text>
+
+  <text class="num" x="278" y="86">02</text>
+  <text class="label" x="278" y="112">Simulate</text>
+  <text class="small" x="278" y="134">VLP environment</text>
+
+  <text class="num" x="456" y="86">03</text>
+  <text class="label" x="456" y="112">Calculate</text>
+  <text class="small" x="456" y="134">RSS values</text>
+
+  <text class="num" x="634" y="86">04</text>
+  <text class="label" x="634" y="112">Generate</text>
+  <text class="small" x="634" y="134">dataset</text>
+
+  <text class="num" x="806" y="86">05</text>
+  <text class="label" x="806" y="112">Save</text>
+  <text class="small" x="806" y="134">JSON config</text>
+
+  <!-- travelling data packet -->
+  <circle r="7" fill="#fde68a">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M100 190 H806" keyPoints="0;1" keyTimes="0;1" calcMode="linear"/>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.95;1" dur="10s" repeatCount="indefinite"/>
+  </circle>
+  <line x1="100" y1="190" x2="806" y2="190" stroke="#334155" stroke-width="2" stroke-dasharray="3 7"/>
+</svg>

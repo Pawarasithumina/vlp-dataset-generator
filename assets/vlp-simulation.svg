@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" role="img" aria-label="Animated VLP simulation: a receiver moves through a room lit by four ceiling LEDs while RSS values update">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#1b1442"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fde68a" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#fde68a" stop-opacity="0.02"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fde68a" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#fde68a" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      text { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+      .t { fill: #e2e8f0; font-size: 14px; font-weight: 600; }
+      .s { fill: #94a3b8; font-size: 12px; }
+      .led { animation: pulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      .b2 { animation-delay: .6s; } .b3 { animation-delay: 1.2s; } .b4 { animation-delay: 1.8s; }
+      .beam { animation: flicker 2.4s ease-in-out infinite; }
+      @keyframes pulse { 0%,100% { transform: scale(.8); opacity: .6; } 50% { transform: scale(1.1); opacity: 1; } }
+      @keyframes flicker { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+      .trail { stroke: #38bdf8; stroke-width: 2; stroke-dasharray: 5 7; fill: none; animation: dash 1.2s linear infinite; }
+      @keyframes dash { to { stroke-dashoffset: -24; } }
+    </style>
+  </defs>
+
+  <rect width="900" height="460" rx="18" fill="url(#bg)"/>
+
+  <!-- panel titles -->
+  <text class="t" x="40" y="38">Virtual room (side view)</text>
+  <text class="s" x="40" y="56">4 ceiling LEDs · moving receiver</text>
+  <text class="t" x="640" y="38">RSS at receiver</text>
+  <text class="s" x="640" y="56">updates as the receiver moves</text>
+
+  <!-- room -->
+  <rect x="40" y="76" width="540" height="300" rx="10" fill="#0f1530" stroke="#334155" stroke-width="2"/>
+  <line x1="40" y1="76" x2="580" y2="76" stroke="#64748b" stroke-width="4"/>
+  <line x1="40" y1="340" x2="580" y2="340" stroke="#64748b" stroke-width="3"/>
+
+  <!-- beams -->
+  <polygon class="beam"    points="130,80 50,340 210,340"  fill="url(#beam)"/>
+  <polygon class="beam b2" points="260,80 180,340 340,340" fill="url(#beam)"/>
+  <polygon class="beam b3" points="390,80 310,340 470,340" fill="url(#beam)"/>
+  <polygon class="beam b4" points="510,80 430,340 580,340" fill="url(#beam)"/>
+
+  <!-- LEDs -->
+  <circle class="led"    cx="130" cy="80" r="22" fill="url(#glow)"/>
+  <circle class="led b2" cx="260" cy="80" r="22" fill="url(#glow)"/>
+  <circle class="led b3" cx="390" cy="80" r="22" fill="url(#glow)"/>
+  <circle class="led b4" cx="510" cy="80" r="22" fill="url(#glow)"/>
+  <circle cx="130" cy="80" r="5" fill="#fff7d6"/>
+  <circle cx="260" cy="80" r="5" fill="#fff7d6"/>
+  <circle cx="390" cy="80" r="5" fill="#fff7d6"/>
+  <circle cx="510" cy="80" r="5" fill="#fff7d6"/>
+  <text class="s" x="130" y="108" text-anchor="middle">LED 1</text>
+  <text class="s" x="260" y="108" text-anchor="middle">LED 2</text>
+  <text class="s" x="390" y="108" text-anchor="middle">LED 3</text>
+  <text class="s" x="510" y="108" text-anchor="middle">LED 4</text>
+
+  <!-- receiver path + receiver -->
+  <path class="trail" d="M90 328 H530"/>
+  <g>
+    <rect x="-16" y="-9" width="32" height="12" rx="3" fill="#38bdf8"/>
+    <circle cx="0" cy="-9" r="4.5" fill="#e0f2fe"/>
+    <text class="s" x="0" y="-18" text-anchor="middle" fill="#7dd3fc">Rx</text>
+    <animateTransform attributeName="transform" type="translate"
+      values="90,336; 530,336; 90,336" keyTimes="0;0.5;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"/>
+  </g>
+
+  <!-- RSS bars (heights follow distance to each LED as Rx moves) -->
+  <g transform="translate(630,0)">
+    <line x1="0" y1="376" x2="230" y2="376" stroke="#64748b" stroke-width="2"/>
+
+    <rect x="14"  width="36" rx="4" fill="#7dd3fc">
+      <animate attributeName="height" values="230;120;60;40;40;60;120;230" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="y"      values="146;256;316;336;336;316;256;146" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="68"  width="36" rx="4" fill="#a78bfa">
+      <animate attributeName="height" values="120;230;180;100;100;180;230;120" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="y"      values="256;146;196;276;276;196;146;256" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="122" width="36" rx="4" fill="#f0abfc">
+      <animate attributeName="height" values="50;100;180;230;230;180;100;50" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="y"      values="326;276;196;146;146;196;276;326" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="176" width="36" rx="4" fill="#fcd34d">
+      <animate attributeName="height" values="30;50;100;180;180;100;50;30" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="y"      values="346;326;276;196;196;276;326;346" dur="8s" repeatCount="indefinite"/>
+    </rect>
+
+    <text class="s" x="32"  y="396" text-anchor="middle">LED 1</text>
+    <text class="s" x="86"  y="396" text-anchor="middle">LED 2</text>
+    <text class="s" x="140" y="396" text-anchor="middle">LED 3</text>
+    <text class="s" x="194" y="396" text-anchor="middle">LED 4</text>
+  </g>
+
+  <!-- dataset row ticker -->
+  <rect x="40" y="404" width="820" height="38" rx="8" fill="#151b34" stroke="#334155"/>
+  <text class="s" x="58" y="428">dataset →</text>
+  <text class="t" x="130" y="428" font-size="13">x, y, z, rss_led1, rss_led2, rss_led3, rss_led4</text>
+  <rect x="640" y="410" width="8" height="26" rx="2" fill="#7dd3fc">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  <text class="s" x="660" y="428">row appended every step</text>
+</svg>
